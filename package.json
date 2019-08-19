@@ -8,7 +8,7 @@
     "start": "nodemon --exec npm run babel-node ./src/app.js",
     "build": "babel src --out-dir dist",
     "serve": "node dist/server.js",
-    "test": "mocha src/test",
+    "test": "mocha --require babel-polyfill --require babel-register src/test",
     "commit": "./bin/push.sh"
   },
   "keywords": [
@@ -33,6 +33,8 @@
     "@babel/core": "^7.5.5",
     "@babel/node": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
+    "babel-polyfill": "^6.26.0",
+    "babel-register": "^6.26.0",
     "chai": "^4.2.0",
     "mocha": "^6.2.0",
     "nodemon": "^1.19.1",
