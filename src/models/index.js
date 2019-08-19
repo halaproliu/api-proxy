@@ -3,15 +3,11 @@ const baseModel = require('./base_model')
 
 let Schema = mongoose.Schema
 
-let MenuSchema = new Schema({
+let ResponseSchema = new Schema({
   id: Number,
-  name: String, // 菜单名称
-  icon: String, // 菜单图标
-  url: String, // 菜单链接
-  isAdmin: {
-    type: String,
-    default: '0'
-  }, // 是否是登录用户菜单 1：是，0：否
+  responseCode: String, // 返回编码
+  responseMsg: String, // 返回信息
+  data: Object, // 返回数据对象
   createAt: {
     type: Date,
     default: Date.now()
@@ -22,10 +18,10 @@ let MenuSchema = new Schema({
   }
 })
 
-MenuSchema.index({ id: -1 })
+ResponseSchema.index({ id: -1 })
 
-MenuSchema.plugin(baseModel)
+ResponseSchema.plugin(baseModel)
 
-let Menu = mongoose.model('Menu', MenuSchema)
+let Response = mongoose.model('response', ResponseSchema)
 
-module.exports = Menu
+module.exports = Response
