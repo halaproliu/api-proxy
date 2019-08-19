@@ -7,5 +7,5 @@ else
   git add .
   git commit -m 'auto commit'
   git push github master
-  # git push gitee master
+  git push gitee master
 fi
