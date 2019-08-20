@@ -14,7 +14,7 @@ const generateString = len => {
   const $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678'
   const maxPos = $chars.length
   let result = ''
-  for (i = 0; i < len; i++) {
+  for (let i = 0; i < len; i++) {
     //产生随机数方式
     result += $chars.charAt(Math.floor(Math.random() * maxPos))
   }

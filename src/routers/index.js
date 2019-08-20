@@ -1,4 +1,5 @@
-const Router = require('koa-router')
+import Router from 'koa-router'
+import { genResponse } from '../utils/modelUtils'
 // const options = {
 //   prefix: '/api'
 // }
@@ -21,20 +22,16 @@ router.post('/api/getIntelligentEvaluateStatus', ctx => {
 })
 
 router.post('/api/getIntellEvaOrderStatus', ctx => {
-  ctx.body = {
-    responseCode: '000000',
-    responseMsg: '成功',
-    data: {
-      intellEvaOrderList: [
-        {
-          amount: '405000',
-          productType: '1140100',
-          show: false,
-          status: 2
-        }
-      ]
-    }
-  }
+  ctx.body = genResponse({
+    intellEvaOrderList: [
+      {
+        amount: '405000',
+        productType: '1140100',
+        show: false,
+        status: 2
+      }
+    ]
+  })
 })
 
 router.post('/api/apply', ctx => {
