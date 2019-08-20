@@ -32,6 +32,8 @@ yarn run build
 - koa-convert（将koa1.0中间件转化为koa2.0中间件）
 - koa-router（路由）
 
+### 使用ES6 Decorator
+依赖@babel/plugin-proposal-decorators(babel7)插件实现decorator定义接口路由
 
 ### 测试用例
 使用mocha+chai进行测试用例编写，添加@babel/register和@babel/prolyfill，让测试用例支持es6语法。
