@@ -4,8 +4,7 @@
   "description": "api proxy project by koa",
   "main": "app.js",
   "scripts": {
-    "babel-node": "babel-node",
-    "start": "nodemon --exec npm run babel-node ./src/app.js",
+    "start": "nodemon --exec babel-node ./src/app.js",
     "build": "babel src --out-dir dist",
     "serve": "pm2 start dist/app.js",
     "test": "mocha --require @babel/polyfill --require @babel/register src/test",
