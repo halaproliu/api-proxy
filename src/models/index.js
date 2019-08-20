@@ -5,6 +5,7 @@ let Schema = mongoose.Schema
 
 let ResponseSchema = new Schema({
   id: Number,
+  url: String, // 请求链接
   responseCode: String, // 返回编码
   responseMsg: String, // 返回信息
   data: Object, // 返回数据对象
@@ -22,6 +23,6 @@ ResponseSchema.index({ id: -1 })
 
 ResponseSchema.plugin(baseModel)
 
-let Response = mongoose.model('response', ResponseSchema)
+let Response = mongoose.model('Response', ResponseSchema)
 
 module.exports = Response
