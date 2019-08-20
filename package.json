@@ -8,13 +8,9 @@
     "build": "babel src --out-dir dist",
     "serve": "pm2 start dist/app.js",
     "test": "mocha --require @babel/polyfill --require @babel/register src/test",
-    "commit": "./bin/push.sh"
+    "commit": "node bin/push.js"
   },
-  "keywords": [
-    "api",
-    "proxy",
-    "koa"
-  ],
+  "keywords": ["api", "proxy", "koa"],
   "author": "halapro.liu",
   "license": "ISC",
   "dependencies": {

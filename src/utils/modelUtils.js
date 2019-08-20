@@ -1,4 +1,4 @@
-const genResponse = (data) => {
+const genSuccessResponse = data => {
   const defaults = {
     responseCode: '000000',
     responseMsg: '成功'
@@ -10,6 +10,4 @@ const genResponse = (data) => {
   }
 }
 
-export {
-  genResponse
-}
+export { genSuccessResponse }

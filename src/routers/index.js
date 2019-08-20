@@ -1,16 +1,22 @@
 import { genResponse } from '../utils/modelUtils'
-// import Router from 'koa-router'
-// const router = new Router()
 import { Controller, Request, RequestMethod } from '../utils/decorator'
 
-@Controller({ prefix: '/' })
+@Controller({
+  prefix: '/'
+})
 class IndexController {
-  @Request({ url: '/', method: RequestMethod.GET })
+  @Request({
+    url: '/',
+    method: RequestMethod.GET
+  })
   async main(ctx) {
     ctx.body = 'Hello World'
   }
 
-  @Request({ url: '/api/getIntelligentEvaluateStatus', method: RequestMethod.POST })
+  @Request({
+    url: '/api/getIntelligentEvaluateStatus',
+    method: RequestMethod.POST
+  })
   async getIntelligentEvaluateStatus(ctx) {
     ctx.body = {
       responseCode: '000000',
@@ -23,7 +29,10 @@ class IndexController {
     }
   }
 
-  @Request({ url: '/api/getIntellEvaOrderStatus', method: RequestMethod.POST })
+  @Request({
+    url: '/api/getIntellEvaOrderStatus',
+    method: RequestMethod.POST
+  })
   async getIntellEvaOrderStatus(ctx) {
     ctx.body = genResponse({
       intellEvaOrderList: [
@@ -37,8 +46,10 @@ class IndexController {
     })
   }
 
-
-  @Request({ url: '/api/apply', method: RequestMethod.POST })
+  @Request({
+    url: '/api/apply',
+    method: RequestMethod.POST
+  })
   async apply(ctx) {
     const body = ctx.request.body
     if (!body.evaluateNo) {
