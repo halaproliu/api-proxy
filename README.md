@@ -34,7 +34,7 @@ yarn run build
 
 
 ### 测试用例
-使用mocha+chai进行测试用例编写，添加babel-register和babel-prolyfill，让测试用例支持es6语法。
+使用mocha+chai进行测试用例编写，添加@babel/register和@babel/prolyfill，让测试用例支持es6语法。
 测试用例文件使用.spec.js结尾
 ```js
 npm test // 测试用例测试
