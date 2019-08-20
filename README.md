@@ -39,3 +39,6 @@ yarn run build
 ```js
 npm test // 测试用例测试
 ```
+
+### node版本
+v11.13.0
