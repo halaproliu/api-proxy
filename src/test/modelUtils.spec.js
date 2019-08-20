@@ -3,7 +3,7 @@ const expect = require('chai').expect
 import { genResponse } from '../utils/modelUtils'
 
 describe('utils/modelUtils', () => {
-  it('测试生成api方法', () => {
+  it('测试生成response方法', () => {
     const opts = {
       a: 1
     }
