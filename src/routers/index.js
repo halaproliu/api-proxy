@@ -1,53 +1,59 @@
-import Router from 'koa-router'
 import { genResponse } from '../utils/modelUtils'
-// const options = {
-//   prefix: '/api'
-// }
-const router = new Router()
+// import Router from 'koa-router'
+// const router = new Router()
+import { Controller, Request, RequestMethod } from '../utils/decorator'
 
-router.get('/', ctx => {
-  ctx.body = 'Hello World'
-})
-
-router.post('/api/getIntelligentEvaluateStatus', ctx => {
-  ctx.body = {
-    responseCode: '000000',
-    responseMsg: '成功',
-    data: {
-      barCode: 'KB000900000031',
-      evaluateFlag: '5',
-      evaluateNo: '19082009461100000351'
-    }
+@Controller({ prefix: '/' })
+class IndexController {
+  @Request({ url: '/', method: RequestMethod.GET })
+  async main(ctx) {
+    ctx.body = 'Hello World'
   }
-})
 
-router.post('/api/getIntellEvaOrderStatus', ctx => {
-  ctx.body = genResponse({
-    intellEvaOrderList: [
-      {
-        amount: '405000',
-        productType: '1140100',
-        show: false,
-        status: 2
-      }
-    ]
-  })
-})
-
-router.post('/api/apply', ctx => {
-  const body = ctx.request.body
-  if (!body.evaluateNo) {
+  @Request({ url: '/api/getIntelligentEvaluateStatus', method: RequestMethod.POST })
+  async getIntelligentEvaluateStatus(ctx) {
     ctx.body = {
-      responseCode: '900010',
-      responseMsg: '参数缺失'
+      responseCode: '000000',
+      responseMsg: '成功',
+      data: {
+        barCode: 'KB000900000031',
+        evaluateFlag: '5',
+        evaluateNo: '19082009461100000351'
+      }
     }
-    return
   }
-  ctx.body = {
-    responseCode: '000000',
-    responseMsg: '成功',
-    data: null
-  }
-})
 
-module.exports = router
+  @Request({ url: '/api/getIntellEvaOrderStatus', method: RequestMethod.POST })
+  async getIntellEvaOrderStatus(ctx) {
+    ctx.body = genResponse({
+      intellEvaOrderList: [
+        {
+          amount: '405000',
+          productType: '1140100',
+          show: false,
+          status: 2
+        }
+      ]
+    })
+  }
+
+
+  @Request({ url: '/api/apply', method: RequestMethod.POST })
+  async apply(ctx) {
+    const body = ctx.request.body
+    if (!body.evaluateNo) {
+      ctx.body = {
+        responseCode: '900010',
+        responseMsg: '参数缺失'
+      }
+      return
+    }
+    ctx.body = {
+      responseCode: '000000',
+      responseMsg: '成功',
+      data: null
+    }
+  }
+}
+
+export default IndexController

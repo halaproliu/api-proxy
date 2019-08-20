@@ -1,7 +1,7 @@
 # api-proxy
 
 ### Main
-本项目采用[koa2](https://koa.bootcss.com/)作为主要框架，进行开发，通过[nodemon](https://github.com/remy/nodemon#nodemon)支持开发热重载。使用[babel](https://www.babeljs.cn/)支持es6，es7语法。babel-node包主要是支持nodemon在开发环境时支持es6语法。@babel/cli作为babel的命令行工具，支持编译es6语法，生成ES5代码，同时需要依赖@babel/core和@babel/preset-env。@babel/plugin-transform-runtime和@babel/runtime支持编译后的async...await语法。
+本项目采用[koa2](https://koa.bootcss.com/)作为主要框架，进行开发，通过[nodemon](https://github.com/remy/nodemon#nodemon)支持开发热重载。使用[babel](https://www.babeljs.cn/)支持es6，es7语法。babel-node包主要是支持nodemon在开发环境时支持es6语法。@babel/cli作为babel的命令行工具，支持编译es6语法，生成ES5代码，同时需要依赖@babel/core和@babel/preset-env。@babel/plugin-transform-runtime和@babel/runtime支持编译后的async...await语法。为了让项目支持decorator，新增了@babel/plugin-proposal-decorators包。
 
 ### 项目初始化
 ```js
