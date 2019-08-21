@@ -1,4 +1,4 @@
-import { genResponse } from '../utils/modelUtils'
+import { genSuccessResponse } from '../utils/modelUtils'
 import { Controller, Request, RequestMethod } from '../utils/decorator'
 
 @Controller({
@@ -34,7 +34,7 @@ class IndexController {
     method: RequestMethod.POST
   })
   async getIntellEvaOrderStatus(ctx) {
-    ctx.body = genResponse({
+    ctx.body = genSuccessResponse({
       intellEvaOrderList: [
         {
           amount: '405000',
