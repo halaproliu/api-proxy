@@ -34,3 +34,11 @@ export function Controller({ prefix }) {
     return router
   }
 }
+
+export function mixins(...list) {
+  return function(target) {
+    list.forEach(item => {
+      target.stack = [...target.stack, ...item.stack]
+    })
+  }
+}
