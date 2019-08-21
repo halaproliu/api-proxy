@@ -2,11 +2,11 @@ import { Controller, Request, RequestMethod } from '../utils/decorator'
 import ResponseService from '../services/ResponseService'
 
 @Controller({
-  prefix: '/'
+  prefix: '/api'
 })
 class ResponseController {
   @Request({
-    url: '/api/saveResponse',
+    url: '/saveResponse',
     method: RequestMethod.POST
   })
   async saveResponse(ctx) {
@@ -20,7 +20,7 @@ class ResponseController {
   }
 
   @Request({
-    url: '/api/getResponse',
+    url: '/getResponse',
     method: RequestMethod.GET
   })
   async getResponse(ctx) {
@@ -42,7 +42,7 @@ class ResponseController {
   }
 
   @Request({
-    url: '/api/updateResponse',
+    url: '/updateResponse',
     method: RequestMethod.POST
   })
   async updateResponse(ctx) {
