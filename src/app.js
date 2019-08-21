@@ -14,7 +14,10 @@ import { getIPAddress } from './utils/os'
 
 const app = new Koa()
 const port = config.port || '3000'
-mongoose.connect(config.db.url, { useNewUrlParser: true }) // 连接mongo
+mongoose.set('useFindAndModify', false)
+mongoose.set('useCreateIndex', true)
+mongoose.set('useNewUrlParser', true)
+mongoose.connect(config.db.url) // 连接mongo
 
 const middlewares = [
   convert(cors()),

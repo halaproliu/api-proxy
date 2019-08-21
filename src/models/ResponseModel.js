@@ -8,7 +8,7 @@ let ResponseSchema = new Schema({
   url: String, // 请求链接
   responseCode: String, // 返回编码
   responseMsg: String, // 返回信息
-  data: Object, // 返回数据对象
+  data: String, // 返回数据对象
   createAt: {
     type: Date,
     default: Date.now()
