@@ -1,8 +1,8 @@
 import { genSuccessResponse } from '../utils/modelUtils'
 import { Controller, Request, RequestMethod, mixins } from '../utils/decorator'
-import ResponseController from './ResponseController'
+// import ResponseController from './ResponseController'
 
-@mixins(ResponseController)
+@mixins()
 @Controller({
   prefix: '/'
 })

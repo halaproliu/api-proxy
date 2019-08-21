@@ -1,4 +1,7 @@
+import path from 'path'
+import { getDirList } from '../utils/fileUtils'
 import KoaRouter from 'koa-router'
+
 export function Request({ url, method }) {
   return function(target, name, descriptor) {
     let fn = descriptor.value
@@ -35,7 +38,20 @@ export function Controller({ prefix }) {
   }
 }
 
-export function mixins(...list) {
+export function mixins() {
+  return function(target) {
+    let fileList = []
+    let dir = path.join(__dirname, '../routers')
+    getDirList(dir).then(list => {
+      fileList = list.map(item => require(`../routers/${item}`).default)
+      fileList.forEach(item => {
+        target.stack = [...target.stack, ...item.stack]
+      })
+    })
+  }
+}
+
+export function staticMixins(...list) {
   return function(target) {
     list.forEach(item => {
       target.stack = [...target.stack, ...item.stack]
