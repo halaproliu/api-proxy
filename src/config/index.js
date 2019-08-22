@@ -3,5 +3,6 @@ export default {
   db: {
     url: 'mongodb://localhost:27017/api-proxy' // mongodb链接地址
   },
-  staticPath: './static' // 静态目录
+  staticPath: './static', // 静态目录
+  useMongo: true // 是否使用mongo
 }

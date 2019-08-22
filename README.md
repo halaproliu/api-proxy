@@ -42,6 +42,19 @@ yarn run build
 npm test // 测试用例测试
 ```
 
+### mongodb安装
+可以使用[HomeBrew](https://brew.sh/)进行安装
+```sh
+brew install mongodb
+brew services start mongo // 启动mongo
+brew services stop mongo // 停止mongo
+```
+图形管理界面可以选用[Robot 3T](https://robomongo.org/)
+若不想使用mongo，修改/src/config/index.js中的useMongo为false
+
+### 新的接口定义
+可以在routers文件夹下新建文件，创建新的路由文件，按照ResponseService.js的格式进行开发
+
 ### node版本
 v11.13.0
 
