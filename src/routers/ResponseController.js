@@ -11,7 +11,12 @@ class ResponseController {
   })
   async saveResponse(ctx) {
     const options = ctx.request.body
-    const { responseCode, responseMsg, data } = await ResponseService.saveResponse(options)
+
+    const {
+      responseCode,
+      responseMsg,
+      data
+    } = await ResponseService.saveResponse(options)
     ctx.body = {
       responseCode,
       responseMsg,
@@ -33,7 +38,11 @@ class ResponseController {
       }
       return
     }
-    const { responseCode, responseMsg, data } = await ResponseService.getResponse(url)
+    const {
+      responseCode,
+      responseMsg,
+      data
+    } = await ResponseService.getResponse(url)
     ctx.body = {
       responseCode,
       responseMsg,
@@ -55,7 +64,11 @@ class ResponseController {
       }
       return
     }
-    const { responseCode, responseMsg, data } = await ResponseService.updateResponse(url, {
+    const {
+      responseCode,
+      responseMsg,
+      data
+    } = await ResponseService.updateResponse(url, {
       ...params
     })
     ctx.body = {

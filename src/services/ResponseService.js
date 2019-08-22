@@ -2,11 +2,13 @@ import ResponseModel from '../models/ResponseModel'
 
 export default {
   async saveResponse(options = {}) {
-    return await ResponseModel.create(options)
+    const res = await ResponseModel.create(options)
+    return res || {}
   },
 
   async getResponse(url = '') {
-    return await ResponseModel.findOne({ url }).exec()
+    const res = await ResponseModel.findOne({ url }).exec()
+    return res || {}
   },
 
   async updateResponse(url = '', params) {
@@ -14,6 +16,6 @@ export default {
     const model = await ResponseModel.findOne({ url }).exec()
     keys.forEach(key => (model[key] = params[key]))
     const res = await model.save()
-    return res
+    return res || {}
   }
 }
