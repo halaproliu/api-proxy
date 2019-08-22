@@ -8,9 +8,10 @@ else
   git commit -m 'auto commit'
   git push origin master
   if [ $? -eq 0 ];then
-    echo 'pull成功'
+    echo 'push成功'
   else
     git push github master
     git push gitee master
+    echo 'push成功'
   fi
 fi
