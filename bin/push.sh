@@ -6,6 +6,11 @@ if [ ! $hasGit ];then
 else 
   git add .
   git commit -m 'auto commit'
-  git push github master
-  git push gitee master
+  git push origin master
+  if [ $? -eq 0 ];then
+    echo 'pull成功'
+  else
+    git push github master
+    git push gitee master
+  fi
 fi
