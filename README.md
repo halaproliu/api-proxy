@@ -53,7 +53,7 @@ brew services stop mongo // 停止mongo
 若不想使用mongo，修改/src/config/index.js中的useMongo为false
 
 ### 新的接口定义
-可以在routers文件夹下新建文件，创建新的路由文件，按照ResponseService.js的格式进行开发
+可以在routers文件夹下新建文件，创建新的路由文件，按照ResponseController.js的格式进行开发
 
 ### node版本
 v11.13.0
