@@ -1,7 +1,11 @@
 import fs from 'fs'
 import path from 'path'
-
-export const getDirList = async dirPath => {
+/**
+ * @description 获取指定目录文件列表
+ * @param {*} dirPath 目录路径
+ * @returns fileList 文件列表
+ */
+const getDirList = async dirPath => {
   let fileList = []
   let stats
   const files = await readdir(dirPath)

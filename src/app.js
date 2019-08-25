@@ -13,7 +13,7 @@ import log from './utils/log'
 import { getIPAddress } from './utils/os'
 
 const app = new Koa()
-const port = config.port || '3000'
+const port = config.port || '3000' // 端口号
 
 if (config.useMongo) {
   mongoose.set('useFindAndModify', false)
@@ -32,15 +32,18 @@ const middlewares = [
   router.allowedMethods()
 ]
 
+// 挂载中间件
 middlewares.forEach(middleware => {
   if (!middleware) return
   app.use(middleware)
 })
 
+// 监听错误
 app.on('error', err => {
   log('cyan', err)
 })
 
+// 启动静态服务器
 const server = app.listen(port, _ => {
   log('green', '************************************')
   log('green', 'App running at：')
@@ -49,6 +52,7 @@ const server = app.listen(port, _ => {
   log('green', '************************************')
 })
 
+// 监听ctrl+c退出事件
 process.on('SIGINT', () => {
   log('yellow', 'Stopping dev server')
   server.close(() => {
