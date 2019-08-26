@@ -9,6 +9,7 @@ else
   curBranch=${result:2}]
   git add .
   git commit -m "$msg"
+  echo $curBranch
   git push github $curBranch
   git push gitee $curBranch
 fi
