@@ -7,9 +7,9 @@ if [ ! $hasGit ];then
 else 
   result=`git branch | grep "*"`
   curBranch=${result:2}]
+  echo $curBranch
   git add .
   git commit -m "$msg"
-  echo $curBranch
   git push github $curBranch
   git push gitee $curBranch
 fi
