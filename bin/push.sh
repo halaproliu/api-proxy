@@ -6,8 +6,7 @@ if [ ! $hasGit ];then
   exit 1;
 else 
   result=`git branch | grep "*"`
-  curBranch=${result:2}]
-  echo $curBranch
+  curBranch=${result:2}
   git add .
   git commit -m "$msg"
   git push github $curBranch
