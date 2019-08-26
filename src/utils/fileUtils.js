@@ -5,7 +5,7 @@ import path from 'path'
  * @param {*} dirPath 目录路径
  * @returns fileList 文件列表
  */
-const getDirList = async dirPath => {
+export const getDirList = async dirPath => {
   let fileList = []
   let stats
   const files = await readdir(dirPath)
