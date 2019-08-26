@@ -1,14 +1,18 @@
 #!/bin/bash
 hasGit=`which git`
-msg=${1:-'auto commit'}
+# msg=${1:-'auto commit'}
 if [ ! $hasGit ];then
   echo 'Please download git first!';
   exit 1;
 else 
   result=`git branch | grep "*"`
   curBranch=${result:2}]
+  if [ ! $1 ];then
+    $msg='auto commit'
+  else
+    $msg=$1
+  fi
   git add .
-  echo $msg
   git commit -m "$msg"
   git push github $curBranch
   git push gitee $curBranch
