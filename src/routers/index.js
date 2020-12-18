@@ -1,72 +1,20 @@
-import { genSuccessResponse } from '../utils/modelUtils'
-import { Controller, Request, RequestMethod, mixins } from '../utils/decorator'
-// import ResponseController from './ResponseController'
+import {
+    getDirList
+} from '../utils/fileUtils'
+import path from 'path'
 
-@mixins()
-@Controller({
-  prefix: '/'
-})
-class IndexController {
-  @Request({
-    url: '/',
-    method: RequestMethod.GET
-  })
-  async main(ctx) {
-    ctx.body = 'Hello World'
-  }
-
-  @Request({
-    url: '/api/getIntelligentEvaluateStatus',
-    method: RequestMethod.POST
-  })
-  async getIntelligentEvaluateStatus(ctx) {
-    ctx.body = {
-      responseCode: '000000',
-      responseMsg: '成功',
-      data: {
-        barCode: 'KB000900000031',
-        evaluateFlag: '5',
-        evaluateNo: '19082009461100000351'
-      }
-    }
-  }
-
-  @Request({
-    url: '/api/getIntellEvaOrderStatus',
-    method: RequestMethod.POST
-  })
-  async getIntellEvaOrderStatus(ctx) {
-    ctx.body = genSuccessResponse({
-      intellEvaOrderList: [
-        {
-          amount: '405000',
-          productType: '1140100',
-          show: false,
-          status: 2
-        }
-      ]
-    })
-  }
-
-  @Request({
-    url: '/api/apply',
-    method: RequestMethod.POST
-  })
-  async apply(ctx) {
-    const body = ctx.request.body
-    if (!body.evaluateNo) {
-      ctx.body = {
-        responseCode: '900010',
-        responseMsg: '参数缺失'
-      }
-      return
-    }
-    ctx.body = {
-      responseCode: '000000',
-      responseMsg: '成功',
-      data: null
-    }
-  }
+const registerRouter = async (app) => {
+    let dir = path.join(__dirname, '../routers')
+    let list = await getDirList(dir)
+    list
+        .map(item => {
+            if (item !== 'index.js') {
+                let router = require(`../routers/${item}`).default
+                app.use(router.routes())
+                app.use(router.allowedMethods())
+            }
+        })
 }
 
-export default IndexController
+
+export default registerRouter
